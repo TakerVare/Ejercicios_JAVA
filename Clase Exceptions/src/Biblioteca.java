@@ -3,7 +3,7 @@ import excepciones.LibroNoValidoException;
 public class Biblioteca {
     int contadorLibros= 0;
     Libro[] libros = new Libro[5];
-    boolean agregarLibro(Libro libro)
+    boolean agregarLibro(Libro libro) throws LibroNoValidoException
     {
         boolean bRet = false;
         try {
@@ -12,7 +12,7 @@ public class Biblioteca {
         }
         catch (LibroNoValidoException lnvex)
         {
-            throw lnvex();
+            throw lnvex;
         }
         catch (Exception ex)
         {
@@ -25,7 +25,7 @@ public class Biblioteca {
         return bRet;
     }
 
-    void ComprobarLibro(Libro libro) throws  LibroNoValidoException
+    void ComprobarLibro(Libro libro) throws LibroNoValidoException
     {
         boolean bRet = false;
         if(libro.getTitulo().equals("")){
