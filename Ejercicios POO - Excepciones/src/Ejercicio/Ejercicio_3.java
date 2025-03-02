@@ -21,7 +21,7 @@ public class Ejercicio_3
     }
 
     private void rellenarArray() {
-        //Voy a utilizar una while en lugar de un for para tener mayor control sobre el índice y así poder obligar a que se rellene todo el array
+        //Voy a utilizar un while en lugar de un for para tener mayor control sobre el índice y así poder obligar a que se rellene todo el array
         while (iIndice < arryDouble.length) {
             try{
                 System.out.println("Introduce un número: ");

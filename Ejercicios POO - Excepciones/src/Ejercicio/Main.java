@@ -24,6 +24,9 @@ public class Main {
                 eje3.Ejercicio();
                 break;
             case 4:
+                Ejercicio_4 eje4 = new Ejercicio_4();
+                eje4.imprimeEnunciado();
+                eje4.Ejercicio();
                 break;
             case 5:
                 break;
