@@ -29,6 +29,9 @@ public class Main {
                 eje4.Ejercicio();
                 break;
             case 5:
+                Ejercicio_5 eje5 = new Ejercicio_5();
+                eje5.imprimeEnunciado();
+                eje5.Ejercicio();
                 break;
             case 6:
                 break;
@@ -48,7 +51,9 @@ public class Main {
         System.out.println("1. Ejercicio 1");
         System.out.println("2. Ejercicio 2");
         System.out.println("3. Ejercicio 3");
-        System.out.println("4. Ejercicio 5");
+        System.out.println("4. Ejercicio 4");
+        System.out.println("5. Ejercicio 5");
+        System.out.println("6. Ejercicio 6");
         Scanner sEntradaMenu = new Scanner(System.in);
         int iSeleccion=0;
         try {
