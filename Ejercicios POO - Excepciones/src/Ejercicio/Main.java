@@ -2,7 +2,7 @@ package Ejercicio;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         int iEntrada = seleccionaEjercicio();
 
@@ -34,6 +34,9 @@ public class Main {
                 eje5.Ejercicio();
                 break;
             case 6:
+                Ejercicio_6 eje6 = new Ejercicio_6();
+                eje6.imprimeEnunciado();
+                eje6.Ejercicio();
                 break;
             case 7:
                 break;
