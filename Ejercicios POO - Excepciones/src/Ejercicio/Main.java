@@ -39,7 +39,12 @@ public class Main {
                 eje6.Ejercicio();
                 break;
             case 7:
+                Ejercicio_7 eje7 = new Ejercicio_7();
+                eje7.imprimeEnunciado();
+                eje7.Ejercicio();
                 break;
+            case 8:
+                System.out.println("Adios");
             default:
                 break;
 
@@ -57,6 +62,8 @@ public class Main {
         System.out.println("4. Ejercicio 4");
         System.out.println("5. Ejercicio 5");
         System.out.println("6. Ejercicio 6");
+        System.out.println("7. Ejercicio 7");
+        System.out.println("8. Salir del programa");
         Scanner sEntradaMenu = new Scanner(System.in);
         int iSeleccion=0;
         try {
