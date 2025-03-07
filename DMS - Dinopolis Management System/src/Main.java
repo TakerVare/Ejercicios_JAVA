@@ -10,13 +10,13 @@ public class Main {
         GestorParque Dinopolis = new GestorParque<>(new ArrayList<Dinosaurio>());
         creaActividadesGenericas(listaActividades);
 
-        imprimeMenuInicial(Dinopolis);
+        imprimeMenuInicial(listaActividades, Dinopolis);
 
 
 
     }
 
-    public static void imprimeMenuInicial(GestorParque p_parque)
+    public static void imprimeMenuInicial(ArrayList<Actividad> listaActividades, GestorParque p_parque)
     {
         int iMenu=0;
         Scanner scEntradaMenu = new Scanner(System.in);
@@ -39,22 +39,23 @@ public class Main {
                     System.out.println("Adios.");
                     break;
                 case 1:
-                    imprimeMenuAltaDinosaurio(p_parque);
+                    imprimeMenuAltaDinosaurio(listaActividades, p_parque);
                     break;
                 case 2:
-                    imprimeListadoDetalladoDinosaurios(p_parque);
+                    imprimeListadoDetalladoDinosaurios(listaActividades, p_parque);
                     break;
                 case 3:
-                    listarDinosauriosPorPeriodo(p_parque);
+                    listarDinosauriosPorPeriodo(listaActividades, p_parque);
                     break;
                 case 4:
-                    mostrarDinosaurioMasGrande(p_parque);
+                    mostrarDinosaurioMasGrande(listaActividades, p_parque);
                     break;
                 case 5:
                     //asignar dinosaurios a actividades
+                    asignarDinosaurioAActividad(listaActividades, p_parque);
                     break;
                 case 6:
-                    imprimeBusquedaDinosaurioPorNombre(p_parque);
+                    imprimeBusquedaDinosaurioPorNombre(listaActividades, p_parque);
                 default:
                     break;
             }
@@ -69,7 +70,7 @@ public class Main {
 
     }
 
-    public static void imprimeMenuAltaDinosaurio(GestorParque p_parque){
+    public static void imprimeMenuAltaDinosaurio(ArrayList<Actividad> listaActividades, GestorParque p_parque){
         System.out.println("##################################");
         System.out.println("MENÚ ALTA DE DINOSAURIO: ");
         System.out.println("----------------------------------");
@@ -121,7 +122,7 @@ public class Main {
 
             }else{
                 System.out.println("El tipo de dinosaurio no corresponde a un tipo de dinosaurio válido.");
-                imprimeMenuAltaDinosaurio(p_parque);
+                imprimeMenuAltaDinosaurio(listaActividades, p_parque);
             }
         } catch (Exception e) {
             System.out.println("El valor introducido no es válido, por favor vuelva a intentarlo.");
@@ -129,10 +130,10 @@ public class Main {
             // De momento no lo uso pero lo dejo por si me sirviera más tarde.
         }
 
-        imprimeMenuInicial(p_parque);
+        imprimeMenuInicial(listaActividades, p_parque);
     }
 
-    public static void imprimeListadoDetalladoDinosaurios(GestorParque p_parque){
+    public static void imprimeListadoDetalladoDinosaurios(ArrayList<Actividad> listaActividades, GestorParque p_parque){
         System.out.println("##################################");
         System.out.println("LISTADO DETALLADO DE DINOSAURIOS: ");
         int iContador=0;
@@ -143,11 +144,11 @@ public class Main {
         }
         //System.out.println("##################################");
 
-        imprimeMenuInicial(p_parque);
+        imprimeMenuInicial(listaActividades, p_parque);
 
     }
 
-    public static void listarDinosauriosPorPeriodo(GestorParque p_parque)
+    public static void listarDinosauriosPorPeriodo(ArrayList<Actividad> listaActividades, GestorParque p_parque)
     {
         System.out.println("##################################");
         System.out.println("LISTADO DE DINOSAURIOS POR PERIODO: ");
@@ -176,10 +177,10 @@ public class Main {
             }
         }
         //System.out.println("##################################");
-        imprimeMenuInicial(p_parque);
+        imprimeMenuInicial(listaActividades, p_parque);
     }
 
-    public static void mostrarDinosaurioMasGrande(GestorParque p_parque){
+    public static void mostrarDinosaurioMasGrande(ArrayList<Actividad> listaActividades, GestorParque p_parque){
         System.out.println("##################################");
         System.out.println("ATRACCIÓN ESTRELLA - EL DINOSAURIO MÁS GRANDE: ");
         System.out.println("----------------------------------");
@@ -190,10 +191,10 @@ public class Main {
         System.out.println("----------------------------------");
 
         //System.out.println("##################################");
-        imprimeMenuInicial(p_parque);
+        imprimeMenuInicial(listaActividades, p_parque);
     }
 
-    public static void imprimeBusquedaDinosaurioPorNombre(GestorParque p_parque){
+    public static void imprimeBusquedaDinosaurioPorNombre(ArrayList<Actividad> listaActividades, GestorParque p_parque){
         System.out.println("##################################");
         System.out.println("BÚSQUEDA DE DINOSAURIO POR NOMBRE: ");
         System.out.println("----------------------------------");
@@ -211,10 +212,10 @@ public class Main {
             // De momento no lo uso pero lo dejo por si me sirviera más tarde.
         }
 
-        imprimeMenuInicial(p_parque);
+        imprimeMenuInicial(listaActividades, p_parque);
     }
 
-    public static void asignarDinosaurioAActividad(ArrayList<Actividad> listaActividades, GestorParque p_parque){
+    public static void asignarDinosaurioAActividad(ArrayList<Actividad> listaActividades, GestorParque p_parque) {
         Scanner scEntradaDinoActividades = new Scanner(System.in);
         int iActividad;
         int iDino;
@@ -241,8 +242,15 @@ public class Main {
         System.out.println("Introduce el número de la actividad.");
         iDino=scEntradaDinoActividades.nextInt();
         scEntradaDinoActividades.nextLine();
-        Dinosaurio dinoAuxRapido = p_parque.getParque(iDino);
-        listaActividades.get(iActividad).asignarDinosaurio(p_parque.getParque(iDino));
+        Dinosaurio dinoAuxRapido = (Dinosaurio) p_parque.getParque().get(0);
+
+        try {
+            listaActividades.get(iActividad).asignarDinosaurio((Dinosaurio) p_parque.getParque().get(iDino));
+
+        }catch (Exception e){
+
+        }
+
     }
     public static void creaActividadesGenericas(ArrayList<Actividad> listaActividades){
         listaActividades.add(new Actividad("Fotografía con dinosaurios", "Herbívoro"));
