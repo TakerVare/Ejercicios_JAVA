@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.InputMismatchException;
 
 public class GestorParque<T extends Dinosaurio> {
     private ArrayList<T> o_alParque = new ArrayList<>();
@@ -38,6 +39,22 @@ public class GestorParque<T extends Dinosaurio> {
 
         this.getParque().sort((Comparator.comparingDouble(Dinosaurio::getTamano)).reversed());
 
+    }
+
+    public Dinosaurio buscarDinosaurioPorNombre(String p_sNombre) throws DinosaurioNoEncontradoException{
+        Dinosaurio dResultado=null;
+
+        for (Dinosaurio dino : this.getParque())
+        {
+            if(p_sNombre.equals(dino.getNombre())){
+                dResultado = dino;
+            }
+        }
+        if (dResultado==null){
+            throw new DinosaurioNoEncontradoException("No se ha encontrado ningún dinosaurio con este nombre");
+        }else{
+            return dResultado;
+        }
     }
 
 
