@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class GestorParque<T extends Dinosaurio> {
     private ArrayList<T> o_alParque = new ArrayList<>();
@@ -18,7 +19,7 @@ public class GestorParque<T extends Dinosaurio> {
     }
 
     //Métodos propios
-    public void anadirDinosaurio(T p_Dinosaurio){
+    public void altaDinosaurio(T p_Dinosaurio){
         o_alParque.add(p_Dinosaurio);
     }
 
@@ -32,10 +33,11 @@ public class GestorParque<T extends Dinosaurio> {
         return dinosResultado;
     }
 
-    public ArrayList<Dinosaurio> ordenarPorTamano(ArrayList<Dinosaurio> dinosaurios) {
-        return dinosaurios.stream()
-                .sorted((d1, d2) -> -d1.getTamano().compareTo(d2.geto_dTamano()))
-                .collect(Collectors.toList());
+
+    public void ordenarPorTamano() {
+
+        this.getParque().sort((Comparator.comparingDouble(Dinosaurio::getTamano)).reversed());
+
     }
 
 

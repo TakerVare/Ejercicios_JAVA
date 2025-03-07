@@ -1,8 +1,9 @@
 public class Herbivoro extends Dinosaurio{
 
 
-
-
+    public Herbivoro(String p_sNombre, double p_dTamano, String p_sPeriodo) {
+        super(p_sNombre, p_dTamano, p_sPeriodo);
+    }
 
 
 
