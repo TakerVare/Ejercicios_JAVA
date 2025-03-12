@@ -60,3 +60,13 @@ public abstract class Dinosaurio implements iInteractivo {
 
     public abstract void rugir();
 }
+
+
+/*
+// Supongamos que tienes una clase Dog que herede de Animal con un método speak()
+Dog dog = new Dog();
+Animal animal = (Animal) dog; // El objeto es de la clase Dog, por lo tanto puedes hacer upcast a Animal
+animal.speak(); // Puedes utilizar el método speak() de Animal en este caso
+
+
+ */
